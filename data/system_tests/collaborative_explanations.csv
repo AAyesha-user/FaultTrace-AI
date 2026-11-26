@@ -1,0 +1,6 @@
+robot_id,diagnostic_rank,explanation
+R3,1,R3 ranked #1. It experienced 10 failures across 42 tasks. Failure rate: 23.81%. Statistical vote: 1.000. Reliability vote: 1.000. Task-pattern vote: 1.000. Final consensus: 1.000.
+R5,2,R5 ranked #2. It experienced 4 failures across 43 tasks. Failure rate: 9.30%. Statistical vote: 0.800. Reliability vote: 0.800. Task-pattern vote: 0.800. Final consensus: 0.800.
+R4,3,R4 ranked #3. It experienced 3 failures across 50 tasks. Failure rate: 6.00%. Statistical vote: 0.600. Reliability vote: 0.600. Task-pattern vote: 0.400. Final consensus: 0.533.
+R1,4,R1 ranked #4. It experienced 1 failures across 30 tasks. Failure rate: 3.33%. Statistical vote: 0.400. Reliability vote: 0.400. Task-pattern vote: 0.600. Final consensus: 0.467.
+R2,5,R2 ranked #5. It experienced 0 failures across 35 tasks. Failure rate: 0.00%. Statistical vote: 0.200. Reliability vote: 0.200. Task-pattern vote: 0.200. Final consensus: 0.200.

@@ -1,0 +1,6 @@
+robot_id,rank,diagnostic_score,explanation
+R3,1,0.4081,"R3 experienced 138 failures across 614 tasks. Its failure rate was 22.48%, with Ochiai suspiciousness 0.3364."
+R4,2,0.2292,"R4 experienced 45 failures across 594 tasks. Its failure rate was 7.58%, with Ochiai suspiciousness 0.1115."
+R1,3,0.1993,"R1 experienced 32 failures across 595 tasks. Its failure rate was 5.38%, with Ochiai suspiciousness 0.0793."
+R2,4,0.193,"R2 experienced 34 failures across 623 tasks. Its failure rate was 5.46%, with Ochiai suspiciousness 0.0823."
+R5,5,0.1737,"R5 experienced 25 failures across 574 tasks. Its failure rate was 4.36%, with Ochiai suspiciousness 0.0630."

@@ -1,0 +1,91 @@
+run_id,method,top_ranked_robot,actual_fault_identified,top1,top3,reciprocal_rank
+RUN_01,Baseline Ochiai,R3,True,1,1,1.0
+RUN_01,Collaborative AI,R3,True,1,1,1.0
+RUN_01,MRSD,R3,True,1,1,1.0
+RUN_02,Baseline Ochiai,R4,True,0,1,0.5
+RUN_02,Collaborative AI,R4,True,0,1,0.5
+RUN_02,MRSD,R4,True,0,1,0.5
+RUN_03,Baseline Ochiai,R3,True,1,1,1.0
+RUN_03,Collaborative AI,R3,True,1,1,1.0
+RUN_03,MRSD,R3,True,1,1,1.0
+RUN_04,Baseline Ochiai,R3,True,1,1,1.0
+RUN_04,Collaborative AI,R3,True,1,1,1.0
+RUN_04,MRSD,R3,True,1,1,1.0
+RUN_05,Baseline Ochiai,R3,True,1,1,1.0
+RUN_05,Collaborative AI,R3,True,1,1,1.0
+RUN_05,MRSD,R3,True,1,1,1.0
+RUN_06,Baseline Ochiai,R3,True,1,1,1.0
+RUN_06,Collaborative AI,R3,True,1,1,1.0
+RUN_06,MRSD,R3,True,1,1,1.0
+RUN_07,Baseline Ochiai,R3,True,1,1,1.0
+RUN_07,Collaborative AI,R3,True,1,1,1.0
+RUN_07,MRSD,R3,True,1,1,1.0
+RUN_08,Baseline Ochiai,R2,True,0,1,0.5
+RUN_08,Collaborative AI,R2,True,0,1,0.5
+RUN_08,MRSD,R2,True,0,1,0.5
+RUN_09,Baseline Ochiai,R3,True,1,1,1.0
+RUN_09,Collaborative AI,R3,True,1,1,1.0
+RUN_09,MRSD,R3,True,1,1,1.0
+RUN_10,Baseline Ochiai,R3,True,1,1,1.0
+RUN_10,Collaborative AI,R3,True,1,1,1.0
+RUN_10,MRSD,R3,True,1,1,1.0
+RUN_11,Baseline Ochiai,R3,True,1,1,1.0
+RUN_11,Collaborative AI,R3,True,1,1,1.0
+RUN_11,MRSD,R3,True,1,1,1.0
+RUN_12,Baseline Ochiai,R3,True,1,1,1.0
+RUN_12,Collaborative AI,R3,True,1,1,1.0
+RUN_12,MRSD,R3,True,1,1,1.0
+RUN_13,Baseline Ochiai,R3,True,1,1,1.0
+RUN_13,Collaborative AI,R3,True,1,1,1.0
+RUN_13,MRSD,R3,True,1,1,1.0
+RUN_14,Baseline Ochiai,R3,True,1,1,1.0
+RUN_14,Collaborative AI,R3,True,1,1,1.0
+RUN_14,MRSD,R3,True,1,1,1.0
+RUN_15,Baseline Ochiai,R3,True,1,1,1.0
+RUN_15,Collaborative AI,R3,True,1,1,1.0
+RUN_15,MRSD,R3,True,1,1,1.0
+RUN_16,Baseline Ochiai,R3,True,1,1,1.0
+RUN_16,Collaborative AI,R3,True,1,1,1.0
+RUN_16,MRSD,R3,True,1,1,1.0
+RUN_17,Baseline Ochiai,R3,True,1,1,1.0
+RUN_17,Collaborative AI,R3,True,1,1,1.0
+RUN_17,MRSD,R3,True,1,1,1.0
+RUN_18,Baseline Ochiai,R3,True,1,1,1.0
+RUN_18,Collaborative AI,R3,True,1,1,1.0
+RUN_18,MRSD,R3,True,1,1,1.0
+RUN_19,Baseline Ochiai,R3,True,1,1,1.0
+RUN_19,Collaborative AI,R3,True,1,1,1.0
+RUN_19,MRSD,R3,True,1,1,1.0
+RUN_20,Baseline Ochiai,R3,True,1,1,1.0
+RUN_20,Collaborative AI,R3,True,1,1,1.0
+RUN_20,MRSD,R3,True,1,1,1.0
+RUN_21,Baseline Ochiai,R3,True,1,1,1.0
+RUN_21,Collaborative AI,R5,True,0,1,0.5
+RUN_21,MRSD,R3,True,1,1,1.0
+RUN_22,Baseline Ochiai,R3,True,1,1,1.0
+RUN_22,Collaborative AI,R3,True,1,1,1.0
+RUN_22,MRSD,R3,True,1,1,1.0
+RUN_23,Baseline Ochiai,R4,True,0,1,0.5
+RUN_23,Collaborative AI,R4,True,0,1,0.5
+RUN_23,MRSD,R4,True,0,1,0.5
+RUN_24,Baseline Ochiai,R3,True,1,1,1.0
+RUN_24,Collaborative AI,R3,True,1,1,1.0
+RUN_24,MRSD,R3,True,1,1,1.0
+RUN_25,Baseline Ochiai,R3,True,1,1,1.0
+RUN_25,Collaborative AI,R3,True,1,1,1.0
+RUN_25,MRSD,R3,True,1,1,1.0
+RUN_26,Baseline Ochiai,R3,True,1,1,1.0
+RUN_26,Collaborative AI,R3,True,1,1,1.0
+RUN_26,MRSD,R3,True,1,1,1.0
+RUN_27,Baseline Ochiai,R3,True,1,1,1.0
+RUN_27,Collaborative AI,R3,True,1,1,1.0
+RUN_27,MRSD,R3,True,1,1,1.0
+RUN_28,Baseline Ochiai,R3,True,1,1,1.0
+RUN_28,Collaborative AI,R3,True,1,1,1.0
+RUN_28,MRSD,R3,True,1,1,1.0
+RUN_29,Baseline Ochiai,R3,True,1,1,1.0
+RUN_29,Collaborative AI,R3,True,1,1,1.0
+RUN_29,MRSD,R3,True,1,1,1.0
+RUN_30,Baseline Ochiai,R5,True,0,1,0.3333333333333333
+RUN_30,Collaborative AI,R5,True,0,1,0.3333333333333333
+RUN_30,MRSD,R5,True,0,1,0.3333333333333333

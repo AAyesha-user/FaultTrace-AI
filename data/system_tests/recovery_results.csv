@@ -1,0 +1,11 @@
+task_id,robot_id,task_type,success,faulty_behavior,difficulty,original_robot,reassigned_robot,recovery_success,recovery_status
+T6,R3,inspection,False,True,0.5317826794817836,R3,R2,True,Recovered
+T42,R3,transport,False,True,1.3050458007712145,R3,R1,True,Recovered
+T53,R3,inspection,False,False,0.861996443713611,R3,R4,True,Recovered
+T64,R3,picking,False,True,1.2508777995916098,R3,R5,True,Recovered
+T79,R3,inspection,False,True,1.3787218778231842,R3,R2,True,Recovered
+T104,R3,transport,False,True,1.2233525658809707,R3,R1,True,Recovered
+T105,R3,picking,False,True,1.0762116497209,R3,R4,True,Recovered
+T113,R3,inspection,False,True,1.2282135884411827,R3,R5,True,Recovered
+T135,R3,picking,False,False,0.9767885171089349,R3,R2,True,Recovered
+T140,R3,transport,False,True,0.9037755513182775,R3,R1,True,Recovered

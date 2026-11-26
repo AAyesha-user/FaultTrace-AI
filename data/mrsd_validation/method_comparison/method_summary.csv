@@ -1,0 +1,4 @@
+method,top1_accuracy,top3_accuracy,mean_reciprocal_rank,fault_identification_rate
+Baseline Ochiai,0.8666666666666667,1.0,0.9277777777777777,1.0
+Collaborative AI,0.8333333333333334,1.0,0.9111111111111111,1.0
+MRSD,0.8666666666666667,1.0,0.9277777777777777,1.0

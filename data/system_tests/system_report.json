@@ -1,0 +1,32 @@
+{
+    "system": "FaultTrace AI",
+    "robots": 5,
+    "tasks_executed": 200,
+    "successful_tasks": 182,
+    "failed_tasks": 18,
+    "actual_faulty_robots": [
+        "R3"
+    ],
+    "collaborative_diagnosis": {
+        "top_ranked_robot": "R3",
+        "identified_fault": true,
+        "ranking_rows": 5
+    },
+    "mrsd_diagnosis": {
+        "top_ranked_robot": "R3",
+        "identified_fault": true,
+        "ranking_rows": 5,
+        "candidate_fault_sets": 25
+    },
+    "recovery_summary": {
+        "suspicious_robots": [
+            "R3"
+        ],
+        "failed_tasks_identified": 10,
+        "tasks_reassigned": 10,
+        "successful_recoveries": 10,
+        "recovery_rate": 100.0,
+        "healthy_robots_available": 4
+    },
+    "recovery_records": 10
+}

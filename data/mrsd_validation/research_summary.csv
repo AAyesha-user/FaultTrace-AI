@@ -1,0 +1,2 @@
+total_runs,tasks_per_run,total_tasks,actual_faulty_robots,top1_accuracy,top3_accuracy,mean_reciprocal_rank,cross_run_consistency,top_ranked_robot,fault_identified
+30,100,3000,['R3'],0.8666666666666667,1.0,0.9277777777777777,1.0,R3,True
