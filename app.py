@@ -1,3 +1,6 @@
+from api_page import render_api_page
+import time
+from backend.ai.explainer import generate_report
 from pathlib import Path
 
 import pandas as pd
@@ -720,7 +723,8 @@ with st.sidebar:
             "Diagnosis Explorer",
             "Recovery Center",
             "Experiment Analytics",
-            "Execution History"
+            "Execution History",
+            "API Integration"
         ],
         label_visibility="collapsed"
     )
@@ -1086,10 +1090,14 @@ elif page == "Live Simulator":
                     df = normalize_success(df)
 
                     if df.empty:
-                        raise ValueError("The simulation generated no records.")
+                        raise ValueError(
+                            "The simulation generated no records."
+                        )
 
                     if "success" not in df.columns:
-                        raise ValueError("Execution records do not contain a success column.")
+                        raise ValueError(
+                            "Execution records do not contain a success column."
+                        )
 
                     diagnosis = diagnose_collaboratively(df)
 
@@ -1104,6 +1112,7 @@ elif page == "Live Simulator":
                     st.session_state["live_severity"] = fault_severity
                     st.session_state["live_recovery"] = None
                     st.session_state.pop("live_recovery_summary", None)
+                    st.session_state.pop("ai_report", None)
 
                 st.success("Simulation completed successfully.")
 
@@ -1131,16 +1140,36 @@ elif page == "Live Simulator":
         c1, c2, c3, c4 = st.columns(4)
 
         with c1:
-            kpi("TASKS EXECUTED", f"{len(df):,}", "Total simulation workload", "▤")
+            kpi(
+                "TASKS EXECUTED",
+                f"{len(df):,}",
+                "Total simulation workload",
+                "▤"
+            )
 
         with c2:
-            kpi("SUCCESSFUL", f"{success_count:,}", "Completed operations", "✓")
+            kpi(
+                "SUCCESSFUL",
+                f"{success_count:,}",
+                "Completed operations",
+                "✓"
+            )
 
         with c3:
-            kpi("FAILED", f"{failed_count:,}", "Unsuccessful operations", "!")
+            kpi(
+                "FAILED",
+                f"{failed_count:,}",
+                "Unsuccessful operations",
+                "!"
+            )
 
         with c4:
-            kpi("SUCCESS RATE", f"{success_rate:.1%}", "Overall execution performance", "◎")
+            kpi(
+                "SUCCESS RATE",
+                f"{success_rate:.1%}",
+                "Overall execution performance",
+                "◎"
+            )
 
         st.markdown("<br>", unsafe_allow_html=True)
 
@@ -1171,8 +1200,14 @@ elif page == "Live Simulator":
 
             st.write("**Faulty robots:** " + ", ".join(actual_faults))
             st.write(f"**Fault mode:** {st.session_state['live_mode']}")
-            st.write(f"**Activation:** {st.session_state['live_probability']:.0%}")
-            st.write(f"**Severity:** {st.session_state['live_severity']:.0%}")
+            st.write(
+                f"**Activation:** "
+                f"{st.session_state['live_probability']:.0%}"
+            )
+            st.write(
+                f"**Severity:** "
+                f"{st.session_state['live_severity']:.0%}"
+            )
 
         st.markdown("---")
 
@@ -1231,10 +1266,14 @@ elif page == "Live Simulator":
                         )
 
                     else:
-                        st.info("No valid consensus scores are available.")
+                        st.info(
+                            "No valid consensus scores are available."
+                        )
 
                 else:
-                    st.info("No consensus score column was returned.")
+                    st.info(
+                        "No consensus score column was returned."
+                    )
 
             with right:
 
@@ -1260,15 +1299,112 @@ elif page == "Live Simulator":
 
         else:
 
-            st.warning("The diagnostic engine returned no ranking records.")
+            st.warning(
+                "The diagnostic engine returned no ranking records."
+            )
 
-        with st.expander("Inspect diagnostic agent explanations"):
+        # ======================================================
+        # AI DIAGNOSTIC REPORT
+        # ======================================================
+
+        st.markdown("---")
+
+        section_heading(
+            "AI diagnostic report",
+            "Plain-English explanation of the diagnosis."
+        )
+
+        if st.button(
+            "🧠 GENERATE AI REPORT",
+            use_container_width=True
+        ):
+
+            try:
+                key = st.secrets["OPENROUTER_API_KEY"]
+            except Exception:
+                key = None
+
+            with st.spinner("Writing report..."):
+
+                try:
+
+                    st.session_state["ai_report"] = generate_report(
+                        diagnosis,
+                        injected_faults=actual_faults,
+                        config={
+                            "mode": st.session_state["live_mode"],
+                            "severity": st.session_state["live_severity"],
+                        },
+                        api_key=key,
+                    )
+
+                except Exception as error:
+
+                    st.error(f"AI report error: {error}")
+
+        report = st.session_state.get("ai_report")
+
+        if report:
+
+            st.info(report["text"])
+
+            if report["source"] == "fallback":
+                st.caption(
+                    "Offline summary shown (AI service unavailable)."
+                )
+
+        # ======================================================
+        # DIAGNOSTIC AGENT EXPLANATIONS
+        # ======================================================
+
+        with st.expander(
+            "Inspect diagnostic agent explanations"
+        ):
             show_table(st.session_state["live_explanations"])
 
-        with st.expander("Inspect complete execution history"):
+        with st.expander(
+            "Inspect complete execution history"
+        ):
             show_table(df)
 
         st.markdown("---")
+
+        st.markdown("---")
+
+        section_heading(
+            "Live execution replay",
+            "Replays the simulation task by task, like a live feed."
+        )
+
+        speed = st.select_slider(
+            "Replay speed",
+            options=["Slow", "Normal", "Fast"],
+            value="Normal"
+        )
+
+        if st.button("▶ START LIVE REPLAY", use_container_width=True):
+
+            delay = {"Slow": 0.15, "Normal": 0.05, "Fast": 0.01}[speed]
+            bar = st.progress(0.0)
+            feed = st.empty()
+            tally = {r: {"tasks": 0, "failed": 0} for r in sorted(df["robot_id"].unique())}
+
+            for i, rec in enumerate(df.to_dict("records"), start=1):
+                tally[rec["robot_id"]]["tasks"] += 1
+                if not bool(rec["success"]):
+                    tally[rec["robot_id"]]["failed"] += 1
+
+                if i % 5 == 0 or i == len(df):
+                    live = pd.DataFrame(tally).T.rename_axis("robot").reset_index()
+                    live["failure_rate"] = (live["failed"] / live["tasks"]).fillna(0).round(2)
+                    feed.dataframe(live, hide_index=True, use_container_width=True)
+                    bar.progress(i / len(df))
+
+                time.sleep(delay)
+                
+        # ======================================================
+        # AUTONOMOUS RECOVERY
+        # ======================================================
 
         section_heading(
             "Autonomous recovery",
@@ -2059,6 +2195,10 @@ elif page == "Execution History":
             "faulttrace_execution_history.csv",
             "Download filtered execution history"
         )
+
+
+elif page == "API Integration":
+    render_api_page(page_header, section_heading, show_table)
 
 
 # ==========================================================
