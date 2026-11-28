@@ -1,3 +1,4 @@
+from embedded_api import ensure_api_running
 from api_page import render_api_page
 import time
 from backend.ai.explainer import generate_report
@@ -34,6 +35,8 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+API_STATUS = ensure_api_running()
 
 
 # ==========================================================
@@ -707,6 +710,8 @@ with st.sidebar:
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+    st.caption(f"API server: {API_STATUS}")
 
     st.markdown("---")
 
